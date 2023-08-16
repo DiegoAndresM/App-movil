@@ -63,16 +63,15 @@
     
     .card-container {
       background-color: #a7a6a3;
-      display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
       padding: 10px;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
     }
     
     .card {
       height: 50%;
-      width: 30%;
+      width: 100%;
       background-color: #fcff64;
       border-radius: 15px;
       padding: 10px;
