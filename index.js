@@ -8,6 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const morgan = require('morgan');
 const MongoStore = require('connect-mongo');
+const cors = require('cors');
 
 
 
@@ -31,7 +32,7 @@ require('./passport/local-auth');
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(require('express-session')({ 
-  store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/ResQ' }),
+  store: MongoStore.create({ mongoUrl: 'mongodb+srv://admin:admin@cluster0.ndljknw.mongodb.net/ResQ' }),
   secret: 'keyboard cat', 
   resave: true, 
   saveUninitialized: true }));
@@ -49,14 +50,18 @@ app.use((req, res, next) => {
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join( process.cwd(), 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join( process.cwd(), 'public')));
+
+app.use(cors({
+  optionsSuccessStatus: 200 // Algunos navegadores requieren que se devuelva un código 200 para que las solicitudes CORS tengan éxito
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
