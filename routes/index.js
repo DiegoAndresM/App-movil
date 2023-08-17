@@ -7,7 +7,7 @@ const Pulse = require('../models/pulse')
 
 
 /* GET home page. */
-router.get('/', isAuthenticated, async function(req, res, next) {
+router.get('/', async function(req, res, next) {
   try {
     const workers = await Worker.find(); // Obtener todos los usuarios de la base de datos
     res.render('index', { workers }); // Renderizar la vista 'users' y pasar los usuarios como datos
