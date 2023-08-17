@@ -2,7 +2,7 @@ extends layout
 
 block content
   
-  section.flex.space-x-4.pr-3.grid.grid-cols-2
+  section.flex.space-x-4.pr-3.grid.grid-cols-1
     article.place-items-start.w-34.h-34.py-2.pl-3
       each worker in workers
         article.max-w-sm.p-6.bg-white.border.border-gray-200.p-6.rounded-lg.shadow(class='dark:bg-gray-800 dark:border-gray-700')
@@ -17,7 +17,7 @@ block content
         
 
     // Aqui empieza la barra de instrucciones
-    article.ml-1.py-2.pl-3
+    article.w-screen.h-screen.pr-3
       article.max-w-screen-xl.p-6.bg-white.p-6.border.border-gray-200.place-items-start.w-34.h-34.rounded-lg.shadow(class='dark:bg-gray-800 dark:border-gray-700')
         a(href='#')
           h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900(class='dark:text-white') Noteworthy technology acquisitions 2021
